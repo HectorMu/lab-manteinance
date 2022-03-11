@@ -32,8 +32,7 @@ body {
 
 .sidebar .menu {
   margin: -0.5rem -1rem;
-  position: sticky;
-  top: 10px;
+  margin-top: 30px;
 }
 
 .sidebar .menu .menu-item {
@@ -74,9 +73,10 @@ body {
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
-    top: 0;
+
+    bottom: 0;
     left: -400px;
-    height: 100vh;
+    height: calc(100vh - 48px);
     width: 100%;
     max-width: 200px;
     transition: 0.2s linear;

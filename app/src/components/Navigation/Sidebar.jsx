@@ -1,13 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-//import useSession from "../../hooks/useSession";
+import useSession from "../../hooks/useSession";
 
 const Sidebar = ({ setIsActive, isActive }) => {
-  //const { user } = useSession();
+  const { user } = useSession();
 
-  //   if (user === null) {
-  //     return <></>;
-  //   }
+  if (user === null) {
+    return <></>;
+  }
 
   return (
     <aside className={`sidebar bg-dark ${isActive ? `active` : ``} `}>

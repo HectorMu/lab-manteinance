@@ -3,7 +3,7 @@ const keys = {
     host: "localhost",
     user: "root",
     password: "",
-    database: "template",
+    database: "lab_maintenance",
   },
   production: {
     host: process.env.DB_HOST,

@@ -3,10 +3,12 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const path = require("path");
+const helpers = require("./helpers/helpers");
 const app = express();
 
 //Initialazing database connection
 const initDatabase = require("./database");
+helpers.initialState();
 
 //Using middlewares
 app.use(cors());
