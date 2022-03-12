@@ -1,9 +1,9 @@
-const Template = require("../models/Template");
+const Labs = require("../models/Labs");
 const controller = {};
 
 controller.GetAll = async (req, res) => {
   try {
-    const data = await Template.List();
+    const data = await Labs.List();
     res.json(data);
   } catch (error) {
     console.log("Error" + error);
@@ -16,7 +16,7 @@ controller.GetAll = async (req, res) => {
 };
 controller.GetOne = async (req, res) => {
   try {
-    const data = await Template.FindOne(req.params.id);
+    const data = await Labs.FindOne(req.params.id);
     res.json(data);
   } catch (error) {
     console.log("Error" + error);
@@ -30,11 +30,11 @@ controller.GetOne = async (req, res) => {
 
 controller.Save = async (req, res) => {
   try {
-    const results = await Template.Create(req.body);
+    const results = await Labs.Create(req.body);
     console.log(results);
     res.json({
       status: true,
-      statusText: "Elemento guardado correctamente.",
+      statusText: "Laboratorio registrado correctamente.",
       dbresponse: results,
     });
   } catch (error) {
@@ -49,7 +49,7 @@ controller.Save = async (req, res) => {
 
 controller.Update = async (req, res) => {
   try {
-    const results = await Template.Update(req.body, req.params.id);
+    const results = await Labs.Update(req.body, req.params.id);
     console.log(results);
 
     //Si no exite ninguna fila afectada, significa que ese registro no existe.
@@ -61,7 +61,7 @@ controller.Update = async (req, res) => {
     }
     res.status(200).json({
       status: true,
-      statusText: "Elemento editado correctamente.",
+      statusText: "Laboratorio editado correctamente.",
       dbresponse: results,
     });
   } catch (error) {
@@ -76,7 +76,7 @@ controller.Update = async (req, res) => {
 
 controller.Delete = async (req, res) => {
   try {
-    const results = await Template.Delete(req.params.id);
+    const results = await Labs.Delete(req.params.id);
     console.log(results);
     //Si no exite ninguna fila afectada, significa que ese registro no existe.
     if (results.affectedRows === 0) {
@@ -87,7 +87,7 @@ controller.Delete = async (req, res) => {
     }
     res.json({
       status: true,
-      statusText: "Elemento eliminado correctamente.",
+      statusText: "Laboratorio eliminado correctamente.",
       dbresponse: results,
     });
   } catch (error) {

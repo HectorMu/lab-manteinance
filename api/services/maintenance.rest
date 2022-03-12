@@ -1,0 +1,25 @@
+### Get all maintenance list
+GET http://localhost:4000/api/maintenance/getall
+
+### Get one maintenance
+GET http://localhost:4000/api/maintenance/getone/1
+
+### Save a maintenance
+POST http://localhost:4000/api/maintenance/save
+Content-Type: application/json
+
+{
+    "location":"Edificio C"
+}
+
+### Update a maintenance
+PUT http://localhost:4000/api/maintenance/update/1
+Content-Type: application/json
+
+{
+    "location":"Edificio B"
+}
+
+### Delete a maintenance
+DELETE http://localhost:4000/api/maintenance/delete/2
+Content-Type: application/json

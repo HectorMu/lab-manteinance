@@ -17,8 +17,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //Using the routes
-app.use(require("./routes/template.routes"));
+//app.use(require("./routes/template.routes"));
 app.use(require("./routes/auth.routes"));
+app.use(require("./routes/users.routes"));
+app.use(require("./routes/labs.routes"));
+app.use(require("./routes/computers.routes"));
+app.use(require("./routes/maintenance.routes"));
+app.use(require("./routes/supportticket.routes"));
 
 //To deploy a react router app build with an express server, this must be here forever
 // app.use(express.static(path.join(__dirname, "build")));

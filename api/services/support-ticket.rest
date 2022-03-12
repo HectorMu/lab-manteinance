@@ -1,0 +1,26 @@
+### Get all support-tickets list
+GET http://localhost:4000/api/support-ticket/getall
+
+### Get one support-ticket
+GET http://localhost:4000/api/support-ticket/getone/1
+
+### Save a support-ticket
+POST http://localhost:4000/api/support-ticket/save
+Content-Type: application/json
+
+{
+    "location":"Edificio C"
+}
+
+### Update a support-ticket
+PUT http://localhost:4000/api/support-ticket/update/1
+Content-Type: application/json
+
+{
+    "location":"Edificio B"
+}
+
+### Delete a support-ticket
+DELETE http://localhost:4000/api/support-ticket/delete/2
+Content-Type: application/json
+

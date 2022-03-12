@@ -1,0 +1,25 @@
+### Get all compuuters list
+GET http://localhost:4000/api/computers/getall
+
+### Get one computer
+GET http://localhost:4000/api/computers/getone/1
+
+### Save a computer
+POST http://localhost:4000/api/computers/save
+Content-Type: application/json
+
+{
+    "location":"Edificio C"
+}
+
+### Update a computer
+PUT http://localhost:4000/api/computers/update/1
+Content-Type: application/json
+
+{
+    "location":"Edificio B"
+}
+
+### Delete a computer
+DELETE http://localhost:4000/api/computers/delete/2
+Content-Type: application/json

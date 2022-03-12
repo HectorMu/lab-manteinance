@@ -1,0 +1,31 @@
+### Get all user list
+GET http://localhost:4000/api/users/getall
+
+### Get one user
+GET http://localhost:4000/api/users/getone/1
+
+### Save an user
+POST http://localhost:4000/api/users/save
+Content-Type: application/json
+
+{
+    "username":"Hector171",
+    "fullname":"Hector Muñoz Flores",
+    "email":"hector@gmail.com",
+    "password":"12345678",
+    "fk_rol": 2
+}
+
+### Update an user
+PUT http://localhost:4000/api/users/update/5
+Content-Type: application/json
+
+{
+    "email":"hector2@gmail.com",
+    "password":"123456"
+}
+
+### Delete an user
+DELETE http://localhost:4000/api/users/delete/3
+Content-Type: application/json
+

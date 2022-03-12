@@ -1,9 +1,9 @@
-const Template = require("../models/Template");
+const SupportTicket = require("../models/SupportTicket");
 const controller = {};
 
 controller.GetAll = async (req, res) => {
   try {
-    const data = await Template.List();
+    const data = await SupportTicket.List();
     res.json(data);
   } catch (error) {
     console.log("Error" + error);
@@ -16,7 +16,7 @@ controller.GetAll = async (req, res) => {
 };
 controller.GetOne = async (req, res) => {
   try {
-    const data = await Template.FindOne(req.params.id);
+    const data = await SupportTicket.FindOne(req.params.id);
     res.json(data);
   } catch (error) {
     console.log("Error" + error);
@@ -30,7 +30,7 @@ controller.GetOne = async (req, res) => {
 
 controller.Save = async (req, res) => {
   try {
-    const results = await Template.Create(req.body);
+    const results = await SupportTicket.Create(req.body);
     console.log(results);
     res.json({
       status: true,
@@ -49,7 +49,7 @@ controller.Save = async (req, res) => {
 
 controller.Update = async (req, res) => {
   try {
-    const results = await Template.Update(req.body, req.params.id);
+    const results = await SupportTicket.Update(req.body, req.params.id);
     console.log(results);
 
     //Si no exite ninguna fila afectada, significa que ese registro no existe.
@@ -76,7 +76,7 @@ controller.Update = async (req, res) => {
 
 controller.Delete = async (req, res) => {
   try {
-    const results = await Template.Delete(req.params.id);
+    const results = await SupportTicket.Delete(req.params.id);
     console.log(results);
     //Si no exite ninguna fila afectada, significa que ese registro no existe.
     if (results.affectedRows === 0) {

@@ -1,0 +1,26 @@
+### Get all labs list
+GET http://localhost:4000/api/labs/getall
+
+### Get one lab
+GET http://localhost:4000/api/labs/getone/1
+
+### Save a lab
+POST http://localhost:4000/api/labs/save
+Content-Type: application/json
+
+{
+    "location":"Edificio C"
+}
+
+### Update a lab
+PUT http://localhost:4000/api/labs/update/1
+Content-Type: application/json
+
+{
+    "location":"Edificio B"
+}
+
+### Delete a lab
+DELETE http://localhost:4000/api/labs/delete/2
+Content-Type: application/json
+
