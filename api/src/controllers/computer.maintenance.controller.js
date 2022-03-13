@@ -1,9 +1,11 @@
 const Maintenance = require("../models/Maintenance");
 const controller = {};
 
+const maintenance = new Maintenance();
+
 controller.GetAll = async (req, res) => {
   try {
-    const data = await Maintenance.List();
+    const data = await maintenance.List();
     res.json(data);
   } catch (error) {
     console.log("Error" + error);
@@ -16,7 +18,7 @@ controller.GetAll = async (req, res) => {
 };
 controller.GetOne = async (req, res) => {
   try {
-    const data = await Maintenance.FindOne(req.params.id);
+    const data = await maintenance.FindOne(req.params.id);
     res.json(data);
   } catch (error) {
     console.log("Error" + error);
@@ -30,7 +32,7 @@ controller.GetOne = async (req, res) => {
 
 controller.Save = async (req, res) => {
   try {
-    const results = await Maintenance.Create(req.body);
+    const results = await maintenance.Create(req.body);
     console.log(results);
     res.json({
       status: true,
@@ -49,7 +51,7 @@ controller.Save = async (req, res) => {
 
 controller.Update = async (req, res) => {
   try {
-    const results = await Maintenance.Update(req.body, req.params.id);
+    const results = await maintenance.Update(req.body, req.params.id);
     console.log(results);
 
     //Si no exite ninguna fila afectada, significa que ese registro no existe.
@@ -76,7 +78,7 @@ controller.Update = async (req, res) => {
 
 controller.Delete = async (req, res) => {
   try {
-    const results = await Maintenance.Delete(req.params.id);
+    const results = await maintenance.Delete(req.params.id);
     console.log(results);
     //Si no exite ninguna fila afectada, significa que ese registro no existe.
     if (results.affectedRows === 0) {

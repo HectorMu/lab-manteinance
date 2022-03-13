@@ -9,7 +9,22 @@ POST http://localhost:4000/api/computers/save
 Content-Type: application/json
 
 {
-    "location":"Edificio C"
+    "fk_laboratory":1,
+    "serial_number": 3223234423,
+    "brand": "Dell",
+    "network_type":"Wireless",
+    "status": "working",
+    "ram_memory": "8 gb",
+    "motherboard": "Dell OEM",
+    "cpu":"Intel Core i5 ",
+    "gpu":"Intel HD Graphics",
+    "psu":"300w",
+    "storage":"1TB HDD",
+    "display":"IPS 1080p 24'",
+    "keyboard": "Dell OEM",
+    "mouse":"Dell OEM",
+    "sound": "Dell twins sound pack"
+
 }
 
 ### Update a computer

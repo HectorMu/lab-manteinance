@@ -41,7 +41,8 @@ create table computer_perhipheals(
     display varchar(100),
     keyboard varchar(100),
     mouse varchar(100),
-    sound varchar(100)
+    sound varchar(100),
+    foreign key (fk_computer) references computer(id)
 );
 
 create table computer_components(
@@ -52,7 +53,8 @@ create table computer_components(
    cpu varchar (100),
    gpu varchar (100),
    psu varchar (100),
-   storage varchar (100)
+   storage varchar (100),
+   foreign key (fk_computer) references computer(id)
 );
 
 create table computer_maintenance(

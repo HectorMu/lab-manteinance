@@ -1,43 +1,26 @@
-const connection = require("../database");
+const Model = require("./Model");
 
-const TABLE_NAME = "computer_components";
-const IDENTIFIER_NAME = "id";
-
-const Template = {
+class Components extends Model {
+  constructor() {
+    super();
+    this.table = "computer_components";
+    this.table_pk = "id";
+  }
   async List() {
-    const data = await connection.query(`select * from ${TABLE_NAME}`);
-    return data;
-  },
+    return super.List();
+  }
   async FindOne(id) {
-    const data = await connection.query(
-      `select * from ${TABLE_NAME} where ${IDENTIFIER_NAME} = ?`,
-      [id]
-    );
-    if (!data.length > 0) {
-      return {};
-    }
-    return data[0];
-  },
+    return super.FindOne(id);
+  }
   async Create(data) {
-    const results = await connection.query(`insert into ${TABLE_NAME} set ?`, [
-      data,
-    ]);
-    return results;
-  },
+    return super.Create(data);
+  }
   async Update(data, id) {
-    const results = await connection.query(
-      `update ${TABLE_NAME} set ? where ${IDENTIFIER_NAME} = ?`,
-      [data, id]
-    );
-    return results;
-  },
+    return super.Update(data, id);
+  }
   async Delete(id) {
-    const results = await connection.query(
-      `delete from ${TABLE_NAME} where ${IDENTIFIER_NAME} = ?`,
-      [id]
-    );
-    return results;
-  },
-};
+    return super.Delete(id);
+  }
+}
 
-module.exports = Template;
+module.exports = Components;

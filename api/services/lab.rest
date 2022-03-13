@@ -9,7 +9,7 @@ POST http://localhost:4000/api/labs/save
 Content-Type: application/json
 
 {
-    "location":"Edificio C"
+    "location":"Edificio A"
 }
 
 ### Update a lab

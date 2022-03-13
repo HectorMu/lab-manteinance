@@ -1,43 +1,26 @@
-const connection = require("../database");
+const Model = require("./Model");
+class SupportTicket extends Model {
+  constructor() {
+    super();
+    this.table = "support_ticket";
+    this.table_pk = "id";
+  }
 
-const TABLE_NAME = "support_ticket";
-const IDENTIFIER_NAME = "id";
-
-const Template = {
   async List() {
-    const data = await connection.query(`select * from ${TABLE_NAME}`);
-    return data;
-  },
+    return super.List();
+  }
   async FindOne(id) {
-    const data = await connection.query(
-      `select * from ${TABLE_NAME} where ${IDENTIFIER_NAME} = ?`,
-      [id]
-    );
-    if (!data.length > 0) {
-      return {};
-    }
-    return data[0];
-  },
+    return super.FindOne(id);
+  }
   async Create(data) {
-    const results = await connection.query(`insert into ${TABLE_NAME} set ?`, [
-      data,
-    ]);
-    return results;
-  },
+    return super.Create(data);
+  }
   async Update(data, id) {
-    const results = await connection.query(
-      `update ${TABLE_NAME} set ? where ${IDENTIFIER_NAME} = ?`,
-      [data, id]
-    );
-    return results;
-  },
+    return super.Update(data, id);
+  }
   async Delete(id) {
-    const results = await connection.query(
-      `delete from ${TABLE_NAME} where ${IDENTIFIER_NAME} = ?`,
-      [id]
-    );
-    return results;
-  },
-};
+    return super.Delete(id);
+  }
+}
 
-module.exports = Template;
+module.exports = SupportTicket;

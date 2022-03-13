@@ -1,9 +1,9 @@
 const Model = require("./Model");
 
-class Perhipheal extends Model {
+class Lab extends Model {
   constructor() {
     super();
-    this.table = "computer_perhipheals";
+    this.table = "laboratory";
     this.table_pk = "id";
   }
   async List() {
@@ -23,4 +23,4 @@ class Perhipheal extends Model {
   }
 }
 
-module.exports = Perhipheal;
+module.exports = Lab;
