@@ -15,7 +15,7 @@ const NavbarLayout = ({ setIsActive, isActive }) => {
   return (
     <>
       <Navbar bg="dark" variant="dark" className="px-3" fixed="top">
-        <Navbar.Brand href="#home">React Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#home">Schoolab</Navbar.Brand>
 
         {user !== null ? (
           <>

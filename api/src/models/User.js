@@ -7,19 +7,25 @@ class User extends Model {
     this.table_pk = "id";
   }
   async List() {
-    return super.List();
+    let users = await super.List();
+
+    users.map((u) => {
+      delete u.password;
+      return u;
+    });
+    return users;
   }
   async FindOne(id) {
-    return super.FindOne(id);
+    return await super.FindOne(id);
   }
   async Create(data) {
-    return super.Create(data);
+    return await super.Create(data);
   }
   async Update(data, id) {
-    return super.Update(data, id);
+    return await super.Update(data, id);
   }
   async Delete(id) {
-    return super.Delete(id);
+    return await super.Delete(id);
   }
 }
 

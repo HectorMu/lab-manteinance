@@ -11,7 +11,9 @@ export const Layout = ({ children }) => {
       <div className="wrapper">
         <Sidebar isActive={isActive} setIsActive={setIsActive} />
 
-        <div className="content">{children}</div>
+        <div className="content" style={{ paddingTop: "100px" }}>
+          {children}
+        </div>
       </div>
     </>
   );
