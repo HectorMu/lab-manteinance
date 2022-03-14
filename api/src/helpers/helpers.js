@@ -57,7 +57,7 @@ helpers.isDuplicatedOnUpdate = async (table, field, currentId, newValue) => {
     const tableKey = await conn.query(
       `SHOW KEYS FROM ${table} WHERE Key_name = 'PRIMARY'`
     );
-    const results = await connection.query(
+    const results = await conn.query(
       `select * from ${table} where ${field} = ? && ${tableKey[0].Column_name} != ${currentId}`,
       [newValue]
     );

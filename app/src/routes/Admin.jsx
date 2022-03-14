@@ -7,6 +7,10 @@ import EditUser from "../pages/Admin/Users/Edit";
 import Labs from "../pages/Admin/Labs/Labs";
 import AddLab from "../pages/Admin/Labs/Add";
 import EditLab from "../pages/Admin/Labs/Edit";
+//
+import Computers from "../pages/Admin/Computers/Computers";
+import AddComputer from "../pages/Admin/Computers/Add";
+import EditComputer from "../pages/Admin/Computers/Edit";
 const Template = {
   dev: [
     {
@@ -32,6 +36,18 @@ const Template = {
     {
       path: "/labs/edit/:id",
       element: <EditLab />,
+    },
+    {
+      path: "/computers",
+      element: <Computers />,
+    },
+    {
+      path: "/computers/add",
+      element: <AddComputer />,
+    },
+    {
+      path: "/computers/edit/:id",
+      element: <EditComputer />,
     },
   ],
 
@@ -60,6 +76,18 @@ const Template = {
     {
       path: "/labs/edit/:id",
       element: <IsLoggedIn view={EditLab} />,
+    },
+    {
+      path: "/computers",
+      element: <IsLoggedIn view={Computers} />,
+    },
+    {
+      path: "/computers/add",
+      element: <IsLoggedIn view={AddComputer} />,
+    },
+    {
+      path: "/computers/edit/:id",
+      element: <IsLoggedIn view={EditComputer} />,
     },
   ],
 };
