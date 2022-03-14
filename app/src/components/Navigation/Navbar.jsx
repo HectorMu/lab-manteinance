@@ -23,7 +23,14 @@ const NavbarLayout = ({ setIsActive, isActive }) => {
               <NavDropdown
                 title={
                   <span>
-                    <i className="fas fa-user"></i> {user.username}
+                    <img
+                      src={`https://ui-avatars.com/api/?name=${user.username}`}
+                      className="rounded-circle"
+                      height={30}
+                      width={30}
+                      alt=""
+                    />{" "}
+                    {user.username}
                   </span>
                 }
                 id="navbarScrollingDropdown"

@@ -17,7 +17,7 @@ import useRouterHooks from "../../../hooks/useRouterHooks";
 
 const Form = () => {
   const [user, setUser] = useState(FormEntries);
-  const [onEditing, setonEditing] = useState([]);
+  const [onEditing, setonEditing] = useState(false);
   const [editPassword, setEditPassword] = useState(false);
   const { navigate, location, params } = useRouterHooks();
 
