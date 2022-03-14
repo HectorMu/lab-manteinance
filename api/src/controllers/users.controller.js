@@ -33,9 +33,24 @@ controller.GetOne = async (req, res) => {
 
 controller.Save = async (req, res) => {
   const newUser = req.body;
+
+  if (newUser.password.length < 8) {
+    return res.json({
+      status: false,
+      statusText: "The password must be 8 char long",
+    });
+  }
+
+  if (newUser.confirm !== newUser.password) {
+    return res.json({
+      status: false,
+      statusText: "The passwords don't match",
+    });
+  }
+  delete newUser.confirm;
   try {
     const emailExists = await helpers.isDuplicated(
-      "user",
+      "users",
       "email",
       newUser.email
     );
@@ -69,13 +84,26 @@ controller.Update = async (req, res) => {
   const { id } = req.params;
   try {
     if (modifiedUser.password) {
+      if (modifiedUser.password !== modifiedUser.confirm) {
+        return res.json({
+          status: false,
+          statusText: "The passwords don't match.",
+        });
+      }
+      delete modifiedUser.confirm;
+      if (modifiedUser.password.length < 8) {
+        return res.json({
+          status: false,
+          statusText: "The password must be 8 char long",
+        });
+      }
       modifiedUser.password = await helpers.encryptPassword(
         modifiedUser.password
       );
     }
 
     const emailExists = await helpers.isDuplicatedOnUpdate(
-      "user",
+      "users",
       "email",
       id,
       modifiedUser.email

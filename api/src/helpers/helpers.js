@@ -41,7 +41,7 @@ helpers.initialState = async () => {
 
 helpers.isDuplicated = async (table, field, value) => {
   try {
-    const results = await connection.query(
+    const results = await conn.query(
       `select * from ${table} where ${field} = ?`,
       [value]
     );
@@ -54,7 +54,7 @@ helpers.isDuplicatedOnUpdate = async (table, field, currentId, newValue) => {
   try {
     //Aqui obtenemos la primary key de la tabla para saber el nombre de la columna
     //Ya que las primary key pueden tener nombres diferentes
-    const tableKey = await connection.query(
+    const tableKey = await conn.query(
       `SHOW KEYS FROM ${table} WHERE Key_name = 'PRIMARY'`
     );
     const results = await connection.query(

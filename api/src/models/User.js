@@ -14,7 +14,9 @@ class User extends Model {
     return users;
   }
   async FindOne(id) {
-    return await super.FindOne(id);
+    const user = await super.FindOne(id);
+    delete user.password;
+    return user;
   }
   async Create(data) {
     return await super.Create(data);
