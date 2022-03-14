@@ -219,7 +219,6 @@ const DataTable = ({
           <table
             className="table table-hover"
             id={`dataTable${title.replace(" ", "-")}`}
-            width="100%"
             cellSpacing={0}
           >
             <thead>

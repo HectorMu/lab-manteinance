@@ -2,17 +2,9 @@
   --var1: #b19b6b;
 }
 
-/* html,
-body {
-  /* font-family: "Quicksand", sans-serif; 
-} */
-
-/* for sidebar */
-
 .wrapper {
   display: flex;
   min-height: 100vh;
-  flex-direction: row;
 }
 
 .sidebar {
@@ -106,10 +98,14 @@ body {
   .sidebar .menu {
     position: static;
   }
+  /* .wrapper {
+    display: initial;
+  } */
 }
 
 .content {
   flex: 1 1 0;
+  min-width: 0;
 }
 
 /* /For sidebar */

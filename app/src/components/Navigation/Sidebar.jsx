@@ -13,16 +13,32 @@ const Sidebar = ({ setIsActive, isActive }) => {
     <aside className={`sidebar bg-dark ${isActive ? `active` : ``} `}>
       <div className="d-flex justify-content-end"></div>
       <nav className="menu">
-        <NavLink to="/users" className="menu-item">
+        <NavLink
+          onClick={() => setIsActive(!isActive)}
+          to="/users"
+          className="menu-item"
+        >
           Users <i className="fas fa-users"></i>
         </NavLink>
-        <NavLink to="/labs" className="menu-item">
+        <NavLink
+          onClick={() => setIsActive(!isActive)}
+          to="/labs"
+          className="menu-item"
+        >
           Labs <i className="fas fa-building"></i>
         </NavLink>
-        <NavLink to="/computers" className="menu-item">
+        <NavLink
+          onClick={() => setIsActive(!isActive)}
+          to="/computers"
+          className="menu-item"
+        >
           Computers <i className="fas fa-desktop"></i>
         </NavLink>
-        <NavLink to="/support-tickets" className="menu-item">
+        <NavLink
+          onClick={() => setIsActive(!isActive)}
+          to="/support-tickets"
+          className="menu-item"
+        >
           Tickets <i className="fas fa-ticket-alt"></i>
         </NavLink>
       </nav>

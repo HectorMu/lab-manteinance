@@ -7,12 +7,10 @@ class User extends Model {
     this.table_pk = "id";
   }
   async List() {
-    let users = await super.List();
+    const users = await this.connection.query(
+      "select u.id, u.username, u.fullname, u.email, u.fk_rol as rol_id, r.description as rol_name from users u, roles r where u.fk_rol = r.id"
+    );
 
-    users.map((u) => {
-      delete u.password;
-      return u;
-    });
     return users;
   }
   async FindOne(id) {
