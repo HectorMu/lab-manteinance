@@ -1,4 +1,4 @@
-import IsLoggedIn from "../components/Authentication/IsLoggedIn";
+import IsAdmin from "../components/Authentication/IsAdmin";
 //
 import Users from "../pages/Admin/Users/Users";
 import AddUser from "../pages/Admin/Users/Add";
@@ -87,63 +87,63 @@ const Template = {
   production: [
     {
       path: "/users",
-      element: <IsLoggedIn view={Users} />,
+      element: <IsAdmin view={Users} />,
     },
     {
       path: "/users/add",
-      element: <IsLoggedIn view={AddUser} />,
+      element: <IsAdmin view={AddUser} />,
     },
     {
       path: "/users/edit/:id",
-      element: <IsLoggedIn view={EditUser} />,
+      element: <IsAdmin view={EditUser} />,
     },
     {
       path: "/labs",
-      element: <IsLoggedIn view={Labs} />,
+      element: <IsAdmin view={Labs} />,
     },
     {
       path: "/labs/add",
-      element: <IsLoggedIn view={AddLab} />,
+      element: <IsAdmin view={AddLab} />,
     },
     {
       path: "/labs/edit/:id",
-      element: <IsLoggedIn view={EditLab} />,
+      element: <IsAdmin view={EditLab} />,
     },
     {
       path: "/computers",
-      element: <IsLoggedIn view={Computers} />,
+      element: <IsAdmin view={Computers} />,
     },
     {
       path: "/computers/add",
-      element: <IsLoggedIn view={AddComputer} />,
+      element: <IsAdmin view={AddComputer} />,
     },
     {
       path: "/computers/edit/:id",
-      element: <IsLoggedIn view={EditComputer} />,
+      element: <IsAdmin view={EditComputer} />,
     },
     {
       path: "/maintenances",
-      element: <IsLoggedIn view={Maintenances} />,
+      element: <IsAdmin view={Maintenances} />,
     },
     {
       path: "/maintenances/add",
-      element: <IsLoggedIn view={AddMaintenance} />,
+      element: <IsAdmin view={AddMaintenance} />,
     },
     {
       path: "/maintenances/edit/:id",
-      element: <IsLoggedIn view={EditMaintenance} />,
+      element: <IsAdmin view={EditMaintenance} />,
     },
     {
       path: "/tickets",
-      element: <IsLoggedIn view={Tickets} />,
+      element: <IsAdmin view={Tickets} />,
     },
     {
       path: "/tickets/add",
-      element: <IsLoggedIn view={AddTicket} />,
+      element: <IsAdmin view={AddTicket} />,
     },
     {
       path: "/tickets/edit/:id",
-      element: <IsLoggedIn view={EditTicket} />,
+      element: <IsAdmin view={EditTicket} />,
     },
   ],
 };

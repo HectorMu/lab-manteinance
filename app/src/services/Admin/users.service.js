@@ -3,7 +3,10 @@ import helpers from "../../helpers/helpers";
 
 const List = async () => {
   try {
-    const response = await fetch(`${API}/users/getall`);
+    const response = await fetch(
+      `${API}/users/getall`,
+      helpers.authGetConfig()
+    );
     return await response.json();
   } catch (error) {
     console.log(error);
@@ -12,7 +15,10 @@ const List = async () => {
 
 const ListOne = async (id) => {
   try {
-    const response = await fetch(`${API}/users/getone/${id}`);
+    const response = await fetch(
+      `${API}/users/getone/${id}`,
+      helpers.authGetConfig()
+    );
     return await response.json();
   } catch (error) {
     console.log(error);
