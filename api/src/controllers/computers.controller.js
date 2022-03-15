@@ -1,11 +1,13 @@
 const Computer = require("../models/Computer");
 const Components = require("../models/Components");
 const Perhipheals = require("../models/Perhipheals");
+const Maintenance = require("../models/Maintenance");
 const controller = {};
 
 const computer = new Computer();
 const components = new Components();
 const perhipheals = new Perhipheals();
+const maintenance = new Maintenance();
 
 controller.GetAll = async (req, res) => {
   try {
@@ -22,7 +24,16 @@ controller.GetAll = async (req, res) => {
 };
 controller.GetOne = async (req, res) => {
   try {
-    const data = await computer.FindOne(req.params.id);
+    const generalData = await computer.FindOne(req.params.id);
+    const computerComponents = await components.FindOne(req.params.id);
+    const computerPerhipheals = await perhipheals.FindOne(req.params.id);
+    delete computerComponents.fk_computer;
+    delete computerPerhipheals.fk_computer;
+    const data = {
+      ...generalData,
+      ...computerComponents,
+      ...computerPerhipheals,
+    };
     res.json(data);
   } catch (error) {
     console.log("Error" + error);
@@ -86,6 +97,7 @@ controller.Save = async (req, res) => {
     res.json({
       status: true,
       statusText: "Elemento guardado correctamente.",
+      insertedId: computerCreationResults.insertId,
     });
   } catch (error) {
     console.log("Error" + error);
@@ -98,8 +110,54 @@ controller.Save = async (req, res) => {
 };
 
 controller.Update = async (req, res) => {
+  const newComputer = req.body;
+
+  const {
+    fk_laboratory,
+    serial_number,
+    brand,
+    network_type,
+    status,
+    ram_memory,
+    motherboard,
+    cpu,
+    gpu,
+    psu,
+    storage,
+    display,
+    keyboard,
+    mouse,
+    sound,
+  } = newComputer;
   try {
-    const results = await computer.Update(req.body, req.params.id);
+    const results = await computer.Update(
+      { fk_laboratory, serial_number, brand, network_type, status },
+      req.params.id
+    );
+
+    await components.Update(
+      {
+        fk_computer: req.params.id,
+        ram_memory,
+        motherboard,
+        cpu,
+        gpu,
+        psu,
+        storage,
+      },
+      req.params.id
+    );
+
+    await perhipheals.Update(
+      {
+        fk_computer: req.params.id,
+        display,
+        keyboard,
+        mouse,
+        sound,
+      },
+      req.params.id
+    );
     console.log(results);
 
     //Si no exite ninguna fila afectada, significa que ese registro no existe.
@@ -126,7 +184,11 @@ controller.Update = async (req, res) => {
 
 controller.Delete = async (req, res) => {
   try {
+    await components.Delete(req.params.id);
+    await perhipheals.Delete(req.params.id);
+    await maintenance.Delete(req.params.id);
     const results = await computer.Delete(req.params.id);
+
     console.log(results);
     //Si no exite ninguna fila afectada, significa que ese registro no existe.
     if (results.affectedRows === 0) {

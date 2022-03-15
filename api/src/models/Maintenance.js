@@ -19,7 +19,11 @@ class Maintenance extends Model {
     return super.Update(data, id);
   }
   async Delete(id) {
-    return super.Delete(id);
+    const results = await this.connection.query(
+      "delete  from computer_maintenance where fk_computer = ?",
+      [id]
+    );
+    return results;
   }
 }
 

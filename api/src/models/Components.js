@@ -4,7 +4,7 @@ class Components extends Model {
   constructor() {
     super();
     this.table = "computer_components";
-    this.table_pk = "id";
+    this.table_pk = "fk_computer";
   }
   async List() {
     return super.List();

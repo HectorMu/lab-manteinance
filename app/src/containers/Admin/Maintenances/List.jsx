@@ -1,6 +1,6 @@
 import React from "react";
 import DataTable from "../../../components/Global/DataTable";
-import computersService from "../../../services/Admin/computers.service";
+import maintenanceService from "../../../services/Admin/maintenance.service";
 import useServiceFetch from "../../../hooks/useServiceFetch";
 import useRouterHooks from "../../../hooks/useRouterHooks";
 import Loading from "../../../components/Global/Loading";
@@ -10,32 +10,29 @@ import helpers from "../../../helpers/helpers";
 
 const List = () => {
   const { isLoading, hookData, refreshData } = useServiceFetch(
-    computersService.List
+    maintenanceService.List
   );
   const { navigate } = useRouterHooks();
 
-  const handleDelete = async (computer) => {
+  const handleDelete = async (maintenance) => {
     Swal.fire({
-      text: `¿Delete computer '${computer.id}'?`,
+      text: `¿Delete maintenance '${maintenance.id}'?`,
       icon: "info",
       ...helpers.alertConfig,
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const deleteResults = await computersService.Delete(computer.id);
+        const deleteResults = await maintenanceService.Delete(maintenance.id);
         if (!deleteResults.status) {
           return toast.error(deleteResults.statusText);
         }
-        toast.success("Computer deleted");
+        toast.success("Maintenance deleted");
         await refreshData();
       }
     });
   };
 
-  const redirectToEditPage = (computer) => {
-    navigate(`/computers/edit/${computer.id}`);
-  };
-  const redirectToDetailsPage = (computer) => {
-    navigate(`/computer/details/${computer.id}`);
+  const redirectToEditPage = (maintenance) => {
+    navigate(`/maintenances/edit/${maintenance.id}`);
   };
 
   const tableConfig = {
@@ -43,23 +40,16 @@ const List = () => {
       {
         key: "btnEdit",
         text: "Edit",
-        style: "btn btn-secondary text-withe m-1 btn-sm",
-        fwicon: "fas fa-pen fa-xs",
+        style: "btn btn-secondary text-withe mx-1 btn-sm",
+        fwicon: "fas fa-pen",
         click: (o) => redirectToEditPage(o),
       },
       {
         key: "btnDElete",
         text: "Delete",
-        style: "btn btn-danger m-1 btn-sm",
-        fwicon: "fas fa-times fa-xs",
+        style: "btn btn-danger mx-1 btn-sm",
+        fwicon: "fas fa-times",
         click: (o) => handleDelete(o),
-      },
-      {
-        key: "btnDetails",
-        text: "Details",
-        style: "btn btn-success m-1 btn-sm",
-        fwicon: "fas fa-info fa-xs",
-        click: (o) => redirectToDetailsPage(o),
       },
     ],
   };
