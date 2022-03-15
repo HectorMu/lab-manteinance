@@ -31,8 +31,15 @@ controller.GetOne = async (req, res) => {
 };
 
 controller.Save = async (req, res) => {
+  const newTicket = {
+    ...req.body,
+    fK_user: req.user.id,
+    status: "Open",
+  };
+
+  console.log(newTicket);
   try {
-    const results = await supportticket.Create(req.body);
+    const results = await supportticket.Create(newTicket);
     console.log(results);
     res.json({
       status: true,

@@ -32,7 +32,7 @@ const LoginForm = () => {
     const user = JSON.parse(window.localStorage.getItem("labSession"));
     setUser(user);
 
-    toast.success("Bienvenido!");
+    toast.success("Welcome!");
     navigate("/");
   };
 

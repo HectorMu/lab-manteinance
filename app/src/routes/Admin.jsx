@@ -15,6 +15,10 @@ import EditComputer from "../pages/Admin/Computers/Edit";
 import Maintenances from "../pages/Admin/Maintenance/Maintenances";
 import AddMaintenance from "../pages/Admin/Maintenance/Add";
 import EditMaintenance from "../pages/Admin/Maintenance/Edit";
+//
+import Tickets from "../pages/Admin/Tickets/Tickets";
+import AddTicket from "../pages/Admin/Tickets/Add";
+import EditTicket from "../pages/Admin/Tickets/Edit";
 const Template = {
   dev: [
     {
@@ -64,6 +68,18 @@ const Template = {
     {
       path: "/maintenances/edit/:id",
       element: <EditMaintenance />,
+    },
+    {
+      path: "/tickets",
+      element: <Tickets />,
+    },
+    {
+      path: "/tickets/add",
+      element: <AddTicket />,
+    },
+    {
+      path: "/tickets/edit/:id",
+      element: <EditTicket />,
     },
   ],
 
@@ -116,6 +132,18 @@ const Template = {
     {
       path: "/maintenances/edit/:id",
       element: <IsLoggedIn view={EditMaintenance} />,
+    },
+    {
+      path: "/tickets",
+      element: <IsLoggedIn view={Tickets} />,
+    },
+    {
+      path: "/tickets/add",
+      element: <IsLoggedIn view={AddTicket} />,
+    },
+    {
+      path: "/tickets/edit/:id",
+      element: <IsLoggedIn view={EditTicket} />,
     },
   ],
 };

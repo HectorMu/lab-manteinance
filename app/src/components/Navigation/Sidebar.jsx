@@ -43,7 +43,7 @@ const Sidebar = ({ setIsActive, isActive }) => {
         </NavLink>
         <NavLink
           onClick={() => setIsActive(!isActive)}
-          to="/support-tickets"
+          to="/tickets"
           className="menu-item"
         >
           Tickets <i className="fas fa-ticket-alt"></i>
