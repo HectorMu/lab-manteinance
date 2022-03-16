@@ -62,6 +62,13 @@ const List = () => {
           data={hookData}
           title="Registers"
           actions={true}
+          renameHeaders={{
+            fk_user: "User ID",
+            fk_computer: "PC ID",
+            fk_laboratory: "Lab ID",
+            lifting_date: "Lifting date",
+            required_fixes: "Required fixes",
+          }}
           buttons={tableConfig.buttons}
         />
       )}

@@ -61,6 +61,10 @@ const List = () => {
         <DataTable
           data={hookData}
           title="Registers"
+          renameHeaders={{
+            fk_computer: "PC ID",
+            fk_laboratory: "LAB ID",
+          }}
           actions={true}
           buttons={tableConfig.buttons}
         />

@@ -49,7 +49,7 @@ const LoginForm = () => {
         </FloatingLabel>
       </div>
       <div className="mb-3">
-        <FloatingLabel label="Passwword" controlId="floatingPass">
+        <FloatingLabel label="Password" controlId="floatingPass">
           <FormControl
             type="password"
             placeholder="Password"

@@ -42,12 +42,14 @@ const NavbarLayout = ({ setIsActive, isActive }) => {
                   Log out
                 </NavDropdown.Item>
               </NavDropdown>
-              <Button
-                className="d-block d-sm-block d-md-block d-lg-none d-xl-none d-xxl-none"
-                onClick={() => setIsActive(!isActive)}
-              >
-                <i className="fas fa-bars"></i>
-              </Button>
+              <div className="d-flex align-items-center">
+                <Button
+                  className="d-block d-sm-block d-md-block d-lg-none d-xl-none d-xxl-none btn-sm  d-inline"
+                  onClick={() => setIsActive(!isActive)}
+                >
+                  <i className="fas fa-bars"></i>
+                </Button>
+              </div>
             </Nav>
           </>
         ) : (

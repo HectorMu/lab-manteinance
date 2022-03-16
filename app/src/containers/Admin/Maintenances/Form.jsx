@@ -164,14 +164,6 @@ const Form = () => {
                   value={maintenance.fixes}
                 />
               </FloatingLabel>
-              <FloatingLabel controlId="Date" label="Date" className="mb-3">
-                <FormControl
-                  type="date"
-                  placeholder="Date"
-                  onChange={(e) => handleChange("date", e.target.value)}
-                  value={maintenance.date}
-                />
-              </FloatingLabel>
 
               <div className="d-flex justify-content-center gap-3 mt-3">
                 <Button type="submit" variant="primary">

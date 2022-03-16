@@ -25,7 +25,8 @@ const ListOne = async (id) => {
   }
 };
 
-const Save = async (maintenance) => {
+const Save = async (data) => {
+  const maintenance = { ...data, date: new Date().toLocaleString() };
   try {
     const response = await fetch(
       `${API}/maintenance/save`,
