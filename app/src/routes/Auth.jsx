@@ -8,10 +8,6 @@ const Template = {
       path: "/login",
       element: <Login />,
     },
-    {
-      path: "/signup",
-      element: <Signup />,
-    },
   ],
 
   //Protected for production
@@ -19,10 +15,6 @@ const Template = {
     {
       path: "/login",
       element: <IsAlreadyLogged view={Login} />,
-    },
-    {
-      path: "/signup",
-      element: <IsAlreadyLogged view={Signup} />,
     },
   ],
 };

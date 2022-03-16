@@ -18,8 +18,6 @@ function App() {
       <SessionContextProvider>
         <Layout>
           <Routes>
-            {/* <Route path="/" element={<IsAlreadyLogged view={Index} />} /> */}
-            {/* <Route path="/home" element={<IsLoggedIn view={Home} />} /> */}
             {AppRoutes.prod.map((route) => (
               <Route
                 key={route.path}
@@ -29,7 +27,6 @@ function App() {
             ))}
           </Routes>
         </Layout>
-
         <Toaster />
       </SessionContextProvider>
     </div>
