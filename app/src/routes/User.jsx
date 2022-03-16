@@ -21,7 +21,7 @@ const Template = {
       element: <IsUser view={Tickets} />,
     },
     {
-      path: "/user/do-maintenance/:id/:pcid",
+      path: "/user/do-maintenance/:id/:pcid/:userid/:labid",
       element: <IsUser view={DoMaintenance} />,
     },
   ],

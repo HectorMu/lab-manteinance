@@ -2,13 +2,14 @@ const Computer = require("../models/Computer");
 const Components = require("../models/Components");
 const Perhipheals = require("../models/Perhipheals");
 const Maintenance = require("../models/Maintenance");
-const controller = {};
+const helpers = require("../helpers/helpers");
 
 const computer = new Computer();
 const components = new Components();
 const perhipheals = new Perhipheals();
 const maintenance = new Maintenance();
 
+const controller = {};
 controller.GetAll = async (req, res) => {
   try {
     const data = await computer.List();
@@ -17,7 +18,7 @@ controller.GetAll = async (req, res) => {
     console.log("Error" + error);
     res.json({
       status: false,
-      statusText: "Algo fue mal, contácta al area de sistemas.",
+      statusText: "Something wen't wrong.",
       error,
     });
   }
@@ -39,7 +40,7 @@ controller.GetOne = async (req, res) => {
     console.log("Error" + error);
     res.json({
       status: false,
-      statusText: "Algo fue mal, contácta al area de sistemas.",
+      statusText: "Something wen't wrong.",
       error,
     });
   }
@@ -67,6 +68,18 @@ controller.Save = async (req, res) => {
   } = newComputer;
 
   try {
+    const isSNDuplicated = await helpers.isDuplicated(
+      "computer",
+      "serial_number",
+      serial_number
+    );
+    if (isSNDuplicated) {
+      return res.json({
+        status: false,
+        statusText: "This serial number is already registered",
+        error,
+      });
+    }
     const computerCreationResults = await computer.Create({
       fk_laboratory,
       serial_number,
@@ -96,14 +109,14 @@ controller.Save = async (req, res) => {
 
     res.json({
       status: true,
-      statusText: "Elemento guardado correctamente.",
+      statusText: "Element saved",
       insertedId: computerCreationResults.insertId,
     });
   } catch (error) {
     console.log("Error" + error);
     res.json({
       status: false,
-      statusText: "Algo fue mal, contácta al area de sistemas.",
+      statusText: "Something wen't wrong.",
       error,
     });
   }
@@ -130,6 +143,19 @@ controller.Update = async (req, res) => {
     sound,
   } = newComputer;
   try {
+    const isSNDuplicated = await helpers.isDuplicatedOnUpdate(
+      "computer",
+      "serial_number",
+      req.params.id,
+      serial_number
+    );
+    if (isSNDuplicated) {
+      return res.json({
+        status: false,
+        statusText: "This serial number is already registered",
+        error,
+      });
+    }
     const results = await computer.Update(
       { fk_laboratory, serial_number, brand, network_type, status },
       req.params.id
@@ -164,19 +190,19 @@ controller.Update = async (req, res) => {
     if (results.affectedRows === 0) {
       return res.status(400).json({
         status: false,
-        statusText: "No existe ese elemento.",
+        statusText: "This element doesn't exists",
       });
     }
     res.status(200).json({
       status: true,
-      statusText: "Elemento editado correctamente.",
+      statusText: "Element edited",
       dbresponse: results,
     });
   } catch (error) {
     console.log("Error" + error);
     res.json({
       status: false,
-      statusText: "Algo fue mal, contácta al area de sistemas.",
+      statusText: "Something wen't wrong.",
       error,
     });
   }
@@ -194,19 +220,19 @@ controller.Delete = async (req, res) => {
     if (results.affectedRows === 0) {
       return res.status(400).json({
         status: false,
-        statusText: "No existe ese elemento.",
+        statusText: "This element doesn't exists",
       });
     }
     res.json({
       status: true,
-      statusText: "Elemento eliminado correctamente.",
+      statusText: "Element deleted.",
       dbresponse: results,
     });
   } catch (error) {
     console.log("Error" + error);
     res.json({
       status: false,
-      statusText: "Algo fue mal, contácta al area de sistemas.",
+      statusText: "Something wen't wrong.",
       error,
     });
   }

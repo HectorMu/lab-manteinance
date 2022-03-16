@@ -34,9 +34,6 @@ const List = () => {
   const redirectToEditPage = (computer) => {
     navigate(`/computers/edit/${computer.id}`);
   };
-  const redirectToDetailsPage = (computer) => {
-    navigate(`/computer/details/${computer.id}`);
-  };
 
   const tableConfig = {
     buttons: [
@@ -53,13 +50,6 @@ const List = () => {
         style: "btn btn-danger m-1 btn-sm",
         fwicon: "fas fa-times fa-xs",
         click: (o) => handleDelete(o),
-      },
-      {
-        key: "btnDetails",
-        text: "Details",
-        style: "btn btn-success m-1 btn-sm",
-        fwicon: "fas fa-info fa-xs",
-        click: (o) => redirectToDetailsPage(o),
       },
     ],
   };

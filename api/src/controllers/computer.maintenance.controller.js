@@ -1,7 +1,11 @@
 const Maintenance = require("../models/Maintenance");
+const Computer = require("../models/Computer");
+const Ticket = require("../models/SupportTicket");
 const controller = {};
 
 const maintenance = new Maintenance();
+const computer = new Computer();
+const ticket = new Ticket();
 
 controller.GetAll = async (req, res) => {
   try {
@@ -31,8 +35,18 @@ controller.GetOne = async (req, res) => {
 };
 
 controller.Save = async (req, res) => {
+  const newMaintenance = req.body;
+
+  const { fk_computer, fk_laboratory, fixes, date, ticketid } = newMaintenance;
   try {
-    const results = await maintenance.Create(req.body);
+    const results = await maintenance.Create({
+      fk_computer,
+      fk_laboratory,
+      fixes,
+      date,
+    });
+    await computer.Update({ status: "Working" }, fk_computer);
+    await ticket.Update({ status: "Closed" }, ticketid);
     console.log(results);
     res.json({
       status: true,

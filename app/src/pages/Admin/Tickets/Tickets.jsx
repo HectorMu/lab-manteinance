@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import List from "../../../containers/Admin/Tickets/List";
 import { Link } from "react-router-dom";
 
-const Labs = () => {
+const Tickets = () => {
   return (
     <Container fluid>
       <div className="d-flex flex-column flex-lg-row justify-content-between mb-4">
@@ -18,4 +18,4 @@ const Labs = () => {
   );
 };
 
-export default Labs;
+export default Tickets;

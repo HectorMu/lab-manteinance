@@ -1,8 +1,10 @@
-const controller = {};
-
 const SupportTicket = require("../models/SupportTicket");
-const supportticket = new SupportTicket();
+const Computer = require("../models/Computer");
 
+const supportticket = new SupportTicket();
+const computer = new Computer();
+
+const controller = {};
 controller.GetAll = async (req, res) => {
   try {
     const data = await supportticket.List();
@@ -33,13 +35,13 @@ controller.GetOne = async (req, res) => {
 controller.Save = async (req, res) => {
   const newTicket = {
     ...req.body,
-    fK_user: req.user.id,
+    fk_user: req.user.id,
     status: "Open",
   };
 
-  console.log(newTicket);
   try {
     const results = await supportticket.Create(newTicket);
+    await computer.Update({ status: "Not working" }, newTicket.fk_computer);
     console.log(results);
     res.json({
       status: true,
